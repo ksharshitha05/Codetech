@@ -1,0 +1,103 @@
+PART 1: JUPYTER NOTEBOOK (COPY THIS)
+Title: Task 1 – Understanding Dataset & Data Types
+1. Import Required Libraries
+Copy code
+Python
+import pandas as pd
+import numpy as np
+2. Load the Dataset (Titanic Dataset)
+Copy code
+Python
+df = pd.read_csv("titanic.csv")
+(If using Google Colab, upload titanic.csv first)
+3. Display First and Last Records
+Copy code
+Python
+df.head()
+Copy code
+Python
+df.tail()
+Observation:
+The dataset contains passenger details such as age, sex, ticket class, fare, etc.
+4. Dataset Shape and Columns
+Copy code
+Python
+df.shape
+Copy code
+Python
+df.columns
+Observation:
+Number of rows: 891
+Number of columns: 12
+5. Dataset Information (Data Types & Missing Values)
+Copy code
+Python
+df.info()
+Observation:
+Numerical columns: Age, Fare, SibSp, Parch
+Categorical columns: Sex, Embarked
+Missing values found in Age, Cabin, and Embarked columns
+6. Statistical Summary
+Copy code
+Python
+df.describe()
+Observation:
+This gives statistical information such as mean, minimum, maximum, and standard deviation for numerical columns.
+7. Identify Feature Types
+Numerical Features
+Age
+Fare
+SibSp
+Parch
+Categorical Features
+Sex
+Embarked
+Ticket
+Cabin
+Binary Features
+Survived (0 = No, 1 = Yes)
+Ordinal Features
+Pclass (1st class, 2nd class, 3rd class)
+8. Check Unique Values in Categorical Columns
+Copy code
+Python
+df['Sex'].unique()
+Copy code
+Python
+df['Embarked'].unique()
+Copy code
+Python
+df['Pclass'].unique()
+Observation:
+Categorical columns have limited unique values, suitable for encoding.
+9. Identify Target Variable
+Target Variable: Survived
+Input Features: Age, Sex, Pclass, Fare, SibSp, Parch, Embarked
+10. Dataset Size & ML Suitability
+Observation:
+Dataset has 891 records which is sufficient for basic machine learning models
+Suitable for classification problems
+11. Data Quality Issues
+Missing values in Age and Cabin columns
+Cabin column has many null values
+Class imbalance in Survived column
+12. Conclusion
+The Titanic dataset is well-structured and suitable for machine learning after handling missing values and encoding categorical variables.
+
+PART 2: DATASET ANALYSIS REPORT (1 PAGE)
+Dataset Understanding and Data Types Analysis
+1. Dataset Overview
+The Titanic dataset contains information about 891 passengers with 12 attributes. It includes demographic details, travel class, fare, and survival status.
+2. Types of Features
+Numerical Features: Age, Fare, SibSp, Parch
+Categorical Features: Sex, Embarked, Ticket, Cabin
+Binary Feature: Survived
+Ordinal Feature: Pclass
+3. Data Quality Issues
+The dataset contains missing values in the Age, Cabin, and Embarked columns. The Cabin column has a high number of null values and may need to be dropped or processed. The target variable shows slight imbalance between survived and non-survived passengers.
+4. Target Variable
+The target variable is Survived, which indicates whether a passenger survived (1) or not (0).
+5. Machine Learning Suitability
+The dataset is suitable for machine learning classification tasks. With proper preprocessing such as handling missing values and encoding categorical variables, predictive models can be built effectively.
+6. Conclusion
+This dataset provides a good foundation for understanding data types, structure, and preprocessing steps required before applying machine learning algorithms.
