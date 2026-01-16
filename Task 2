@@ -1,0 +1,61 @@
+Task 2: Data Cleaning & Missing Value Handling
+🎯 Objective
+The goal of this task is to find missing values in the dataset and clean them using simple methods so that the data quality improves.
+🔹 Step 1: Import Libraries
+Python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+🔹 Step 2: Load the Dataset
+(Upload the CSV file first)
+Python
+df = pd.read_csv("house_prices.csv")
+df.head()
+🔹 Step 3: Check Dataset Details
+Python
+df.info()
+This shows column names, data types, and missing values.
+🔹 Step 4: Find Missing Values
+Python
+df.isnull().sum()
+This tells how many missing values are present in each column.
+🔹 Step 5: Show Missing Values Using Graph
+Python
+df.isnull().sum().plot(kind='bar', figsize=(10,4))
+plt.title("Missing Values in Dataset")
+plt.show()
+🔹 Step 6: Save Dataset Size Before Cleaning
+Python
+before_cleaning = df.shape
+before_cleaning
+🔹 Step 7: Fill Missing Values
+✔ Numerical Columns → Fill with Median
+Python
+num_cols = df.select_dtypes(include=['int64','float64']).columns
+
+for col in num_cols:
+    df[col].fillna(df[col].median(), inplace=True)
+✔ Categorical Columns → Fill with Mode
+Python
+cat_cols = df.select_dtypes(include=['object']).columns
+
+for col in cat_cols:
+    df[col].fillna(df[col].mode()[0], inplace=True)
+🔹 Step 8: Remove Columns with Too Many Missing Values
+Python
+df = df.dropna(axis=1, thresh=len(df)*0.5)
+🔹 Step 9: Check Missing Values After Cleaning
+Python
+df.isnull().sum()
+🔹 Step 10: Compare Before and After
+Python
+print("Before Cleaning:", before_cleaning)
+print("After Cleaning:", df.shape)
+🔹 Step 11: Save Cleaned Dataset
+Python
+df.to_csv("cleaned_house_prices.csv", index=False)
+✅ Final Explanation (Very Simple)
+Missing values were identified
+Numerical data filled using median
+Categorical data filled using mode
+Dataset was cleaned successfully
