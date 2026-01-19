@@ -1,0 +1,75 @@
+Task 3: Exploratory Data Analysis (EDA) – How to Complete
+Step 1: Choose a Dataset
+Select any one dataset:
+✅ Iris Dataset (recommended – simple and easy)
+OR
+Netflix Movies and TV Shows
+ For beginners, Iris Dataset is best.
+Step 2: Create EDA Notebook
+Use Python (Jupyter Notebook / Google Colab).
+Import Required Libraries
+Copy code
+Python
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+Step 3: Load the Dataset
+For Iris Dataset:
+Copy code
+Python
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+df = pd.DataFrame(iris.data, columns=iris.feature_names)
+df['species'] = iris.target
+df.head()
+Step 4: Basic Data Understanding
+Copy code
+Python
+df.shape
+df.info()
+df.describe()
+ Insight example:
+Dataset has 150 rows and 5 columns
+No missing values found
+Step 5: Distribution of Numerical Features (Histogram)
+Copy code
+Python
+df.hist(figsize=(10,6))
+plt.show()
+ Insight:
+Petal length and width show clear variation
+Sepal features are more evenly distributed
+Step 6: Categorical Analysis (Count Plot)
+Copy code
+Python
+sns.countplot(x='species', data=df)
+plt.show()
+ Insight:
+All species are equally distributed
+Step 7: Box Plot (Outlier Detection)
+Copy code
+Python
+sns.boxplot(data=df.iloc[:, :4])
+plt.show()
+Insight:
+Few outliers are visible in sepal width
+Step 8: Correlation Heatmap
+Copy code
+Python
+plt.figure(figsize=(8,6))
+sns.heatmap(df.iloc[:, :4].corr(), annot=True, cmap='coolwarm')
+plt.show()
+Insight:
+Petal length and petal width have strong correlation
+These features are important for prediction
+Step 9: Important Features for Prediction
+Petal length
+Petal width
+(Highly correlated and useful for classification)
+Step 10: Final Summary (Write in Notebook or Report)
+Key Findings (Bullet Points):
+Dataset is clean with no missing values
+Petal features show strong correlation
+Boxplots reveal minor outliers
+Petal length and width are best predictors
